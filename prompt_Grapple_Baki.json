@@ -1,0 +1,65 @@
+{
+  "project_variables": {
+    "manga_name": "Baki the Grappler",
+    "series_groups": [
+      {
+        "id": "grappler_baki",
+        "name": "Grappler Baki",
+        "folder_path": "Grappler Baki",
+        "accent": "#ff0000"
+      },
+      {
+        "id": "baki_dou",
+        "name": "Baki-Dou (2018)",
+        "folder_path": "Baki-Dou (2018)",
+        "accent": "#ff8c00"
+      },
+      {
+        "id": "golden_kamui",
+        "name": "Golden Kamui",
+        "folder_path": "Golden Kamui",
+        "accent": "#ffd700"
+      }
+    ],
+    "website_name": "Baki Dou Online",
+    "domain": "https://bakidou.org/",
+    "google_tag_id": "G-LCEWMY6R68"
+  },
+  "visual_identity": {
+    "primary_color": "#ff0000",
+    "secondary_color": "#1a1a1a",
+    "accent_color": "#ffd700",
+    "dark_bg": "#050505",
+    "font_heading": "'Oswald', sans-serif",
+    "font_body": "'Roboto Condensed', sans-serif",
+    "ui_style": "Hyper-Muscular Brutalism (Industrial Steel + Blood Red)"
+  },
+  "antigravity_skill_orchestration": {
+    "active_skills": [
+      "tailwind-patterns",
+      "seo-programmatic",
+      "performance-optimizer",
+      "ui-ux-pro-max",
+      "antigravity-design-expert"
+    ],
+    "directives": "Utilize 'antigravity-design-expert' to create a high-contrast 'Arena' layout. Direct 'seo-programmatic' to generate unique analysis for all three series folders. Use 'performance-optimizer' to ensure the multi-series image grid loads instantly."
+  },
+  "generation_prompts": {
+    "landing_page_ui": "Build a 'Fighter's Archive' UI using Tailwind CSS 4.1. 1. HERO: A cinematic, high-intensity action composition of Baki vs Yujiro. Use a 'concrete texture' CSS overlay. Title 'BAKI DOU ONLINE' in massive, distressed red typography. 2. SERIES SELECTOR: Create three high-impact 'Arena Entry' buttons to switch between Grappler Baki, Baki-Dou, and Golden Kamui. 3. CHAPTER GRID: Design cards that look like 'Fight Contracts'. Left side: High-res colored cover. Right side: Chapter number, name, and a 'Status: Confirmed' badge. Use a 'brushed metal' hover effect.",
+    "seo_geo_strategy": "Activate 'seo-geo' to target Brazil, Japan, and US (major Baki hubs). Generate meta-tags for 'Read Baki-Dou Online' and 'Grappler Baki All Chapters'. Inject JSON-LD Schema for a multi-series manga repository.",
+    "technical_files": "Generate robots.txt, a multi-series sitemap.xml, and .htaccess for high-speed cache headers. Use 'seo-sitemap' to prioritize the latest chapters across all three folders."
+  },
+  "technical_architectures": {
+    "image_workflow": "Convert all folder assets to AVIF via 'python-performance-optimization'. Implement an 'Arena Scroll' (Intersection Observer) where cards 'slam' into place as the user scrolls down.",
+    "tag_integration": "Inject G-LCEWMY6R68 tracking into the global template. Set up custom event tracking for which series (Baki vs Golden Kamui) is getting more clicks."
+  },
+  "design_aesthetics": {
+    "feel": "Aggressive, Raw, Metallic, Epic",
+    "interactive_elements": [
+      "Impact Tremor: The screen shakes slightly when the hero section loads.",
+      "Muscle Flex Animation: Chapter cards expand slightly with a 'flex' ease-out on hover.",
+      "Blood Splatter Separators: Section dividers with a gritty red liquid texture.",
+      "Steel Loading Spinner: A heavy industrial gear spinning during transitions."
+    ]
+  }
+}

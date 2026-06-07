@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Grappler Baki</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Metamorphous&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c53030;
+            --secondary: #1a1a1a;
+            --accent: #f6ad55;
+        }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #0c0c0c;
+            color: #ffffff;
+            overflow: hidden;
+        }
+        .baki-font {
+            font-family: 'Metamorphous', serif;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .blood-drip {
+            position: absolute;
+            top: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #c53030);
+            animation: drip 3s infinite linear;
+        }
+        @keyframes drip {
+            from { top: -100px; }
+            to { top: 100vh; }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen relative">
+    <!-- Background Accents -->
+    <div class="blood-drip" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="blood-drip" style="left: 30%; animation-delay: 1.5s;"></div>
+    <div class="blood-drip" style="left: 60%; animation-delay: 0.5s;"></div>
+    <div class="blood-drip" style="left: 85%; animation-delay: 2s;"></div>
+
+    <div class="text-center z-10 p-8 glass rounded-3xl max-w-lg mx-4 border-t-4 border-red-600">
+        <h1 class="text-9xl font-black baki-font text-red-600 mb-4 animate-pulse">404</h1>
+        <h2 class="text-3xl font-bold mb-6">OPPONENT NOT FOUND</h2>
+        <p class="text-gray-400 mb-8 text-lg">
+            Even the strongest couldn't find this page. It seems this chapter hasn't been written yet or has been crushed by Yujiro Hanma.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/" class="px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition-all hover:scale-105 active:scale-95 shadow-lg shadow-red-900/20">
+                RETURN TO ARENA
+            </a>
+            <a href="/baki.html" class="px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl transition-all">
+                BROWSE SERIES
+            </a>
+        </div>
+    </div>
+
+    <!-- Decorative Image or Illustration (Placeholder) -->
+    <div class="absolute bottom-0 right-0 opacity-20 pointer-events-none">
+        <img src="assets/grappler-baki-hero.png" alt="Baki Hanma" class="h-[60vh] object-contain">
+    </div>
+</body>
+</html>

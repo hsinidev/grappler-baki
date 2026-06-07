@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baki-Dou (2018) Manga Online | Premium Portal</title>
+    <link rel="icon" type="image/png" href="assets/baki-dou-favicon.png">
+    <meta name="description" content="Read free Baki-Dou (2018) Manga Online in HD quality. Access the latest chapters, volumes, and full archives of the legendary Baki universe. Safe and fast mobile reader.">
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag.js?id=G-32THHV9JQF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-32THHV9JQF');
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://unpkg.com/@tailwindcss/browser@4" defer></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Plus+Jakarta+Sans:wght@400;700;800&display=swap');
+        :root { 
+            --primary: #00bfff; 
+            --primary-rgb: 0, 191, 255;
+            --accent: #2f4f4f; 
+            --accent-rgb: 47, 79, 79;
+            --bg: #0f171e;
+            --hover-ignite: #00ffff;
+            --bg-img: url('assets/baki-dou-hero.png');
+        }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: var(--bg); 
+            color: #fff; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth; 
+        }
+        
+        /* Custom Neon Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: var(--primary); box-shadow: 0 0 10px var(--primary); }
+
+        .bangers { font-family: 'Bangers', cursive; }
+        
+        /* Hero Identities */
+        .hero-banner {
+            background-image: var(--bg-img);
+            background-size: cover;
+            background-position: center 25% !important; /* Locked for character visibility */
+            background-attachment: fixed;
+            position: relative;
+            filter: contrast(1.1) brightness(0.9); /* Sharper, more dramatic look */
+        }
+        
+        @media (max-width: 768px) {
+            .hero-banner {
+                background-position: 25% center !important; /* Adjusted for mobile portrait */
+            }
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.4) 100%);
+            z-index: 1;
+        }
+        
+        .hero-banner.ignite {
+            filter: brightness(1.3) contrast(1.1);
+            transform: scale(1.05); /* Stronger pop on ignite */
+        }
+
+        /* Sharp UI Overlay (No Blur for clarity) */
+        .glass-overlay {
+            background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 70%, transparent 100%);
+            border-left: 6px solid var(--primary);
+            padding: 4rem 3rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .hero-banner.ignite .glass-overlay {
+            background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 70%, transparent 100%);
+            border-color: var(--hover-ignite);
+            box-shadow: -20px 0 50px rgba(0,0,0,0.8);
+        }
+
+        /* Dynamic Titles */
+        .title-brutalist {
+            text-shadow: 4px 4px 0px #444, -2px -2px 0px #fff;
+            animation: brutalShake 3s infinite;
+        }
+        @keyframes brutalShake {
+            0%, 100% { transform: skew(0deg); }
+            50% { transform: skew(1deg); }
+        }
+
+        .title-gritty {
+            text-shadow: 2px 2px 10px #000;
+            background: repeating-linear-gradient(45deg, #2e4a2b, #1a1c1a 10px);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .title-intensity {
+            text-shadow: 0 0 20px rgba(220,20,60,0.8);
+            animation: bloodPulse 2s infinite alternate;
+        }
+        @keyframes bloodPulse {
+            from { text-shadow: 0 0 10px red, 0 0 20px red; transform: scale(1); }
+            to { text-shadow: 0 0 20px red, 0 0 40px darkred; transform: scale(1.02); }
+        }
+
+        .title-sharp {
+            text-shadow: 0 0 5px #00ffff;
+            animation: cyberGlow 1.5s infinite alternate;
+        }
+        @keyframes cyberGlow {
+            from { filter: hue-rotate(0deg); }
+            to { filter: hue-rotate(20deg); text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff; }
+        }
+
+        .title-wilderness {
+            text-shadow: 0 0 40px rgba(var(--primary-rgb), 0.6), 0 0 80px rgba(0,0,0,0.5);
+            letter-spacing: -0.02em;
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.8));
+        }
+        @keyframes goldShimmer {
+            to { background-position: 200% center; }
+        }
+
+        /* Neon Glow behind title on Ignite */
+        .hero-banner.ignite h1 {
+            filter: drop-shadow(0 0 15px var(--hover-ignite));
+        }
+
+        .glass-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .glass-card img {
+            filter: grayscale(100%) brightness(0.5);
+            transition: all 0.7s ease;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: crisp-edges;
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--hover-ignite);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 20px var(--hover-ignite);
+        }
+        .glass-card:hover img {
+            filter: grayscale(0%) brightness(1);
+            transform: scale(1.1);
+            opacity: 1 !important;
+        }
+
+        /* --- High Designed Blade Navigation --- */
+        .blade-nav-link {
+            position: relative;
+            padding: 0.6rem 0;
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-block;
+            text-decoration: none;
+            overflow: visible;
+        }
+
+        .blade-nav-link span {
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s;
+        }
+
+        .blade-nav-link.active {
+            color: var(--primary);
+            letter-spacing: 0.5em;
+        }
+
+        /* The Blade Edge */
+        .blade-nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), #fff, var(--primary), transparent);
+            box-shadow: 0 0 15px var(--primary);
+            transition: width 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: skewX(-45deg);
+        }
+
+        .blade-nav-link:hover {
+            color: #fff;
+            filter: drop-shadow(0 0 8px rgba(var(--primary-rgb), 0.8));
+        }
+
+        .blade-nav-link:hover span {
+            transform: scale(1.1) translateY(-2px);
+        }
+
+        .blade-nav-link:hover::before {
+            width: 100%;
+        }
+
+        /* The Folding Effect Overlay */
+        .blade-nav-link::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            opacity: 0;
+            transform: scaleX(0);
+            transform-origin: left;
+            z-index: 1;
+            mix-blend-mode: overlay;
+        }
+
+        /* Kinetic Text Shadow for Blade links */
+        .active.blade-nav-link {
+            text-shadow: 0 0 10px rgba(var(--primary-rgb), 0.5);
+        }
+
+        @media (max-width: 1024px) {
+            .blade-nav-link {
+                margin: 0.5rem;
+                letter-spacing: 0.2em;
+            }
+        }
+
+        /* Global Selector Dropdown */
+        .global-selector-btn {
+            background: #000;
+            border: 2px solid rgba(255,255,255,0.2);
+            padding: 0.6rem 1.5rem;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .global-selector-btn:hover { 
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: calc(100% + 15px);
+            right: 0;
+            width: 380px;
+            background: #0a0a0a;
+            border: 2px solid #fff;
+            box-shadow: 25px 25px 0px rgba(0,0,0,0.8);
+            z-index: 1010;
+            padding: 0;
+            overflow: hidden;
+        }
+        .dropdown-menu.active { display: block; animation: slideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dropdown-header {
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.03);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        .search-container svg {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 1;
+            color: var(--primary);
+            filter: drop-shadow(0 0 5px var(--primary));
+        }
+        
+        #node-search {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.2);
+            width: 100%;
+            padding: 0.85rem 1rem 0.85rem 3rem;
+            border-radius: 0;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s;
+        }
+        #node-search::placeholder {
+            color: rgba(255,255,255,0.4);
+            font-weight: 900;
+        }
+        #node-search:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.1);
+            box-shadow: 0 0 25px var(--primary);
+        }
+
+        .node-section-title {
+            font-size: 0.7rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            padding: 1.25rem 1.5rem 0.75rem;
+            opacity: 0.8;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            margin-bottom: 0.5rem;
+        }
+
+        .series-grid {
+            padding: 0.5rem 1rem;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4px;
+        }
+        
+        .series-link {
+            display: block;
+            padding: 0.8rem 1.2rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-left: 2px solid transparent;
+            text-decoration: none;
+            background: rgba(255,255,255,0.02);
+        }
+        .series-link:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--primary);
+            transform: translateX(5px);
+        }
+        .series-link.active {
+            color: var(--primary);
+            background: rgba(var(--primary-rgb), 0.2);
+            border-left-color: var(--primary);
+            pointer-events: none;
+            box-shadow: inset 5px 0 15px rgba(var(--primary-rgb), 0.1);
+        }
+
+        .node-list {
+            max-height: 350px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) transparent;
+        }
+        .node-item {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .node-item:hover { 
+            background: rgba(255,255,255,0.05);
+            padding-left: 2rem;
+        }
+        .node-item .node-name {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        .node-item .node-id {
+            font-size: 0.7rem;
+            color: var(--primary);
+            font-weight: 900;
+            background: rgba(255,255,255,0.05);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const header = document.querySelector('header.hero-banner');
+            if(header) {
+                header.addEventListener('mouseenter', () => header.classList.add('ignite'));
+                header.addEventListener('mouseleave', () => header.classList.remove('ignite'));
+            }
+
+            // Dropdown Logic
+            const selectorBtn = document.getElementById('global-selector-btn');
+            const dropdown = document.getElementById('dropdown-menu');
+            if(selectorBtn) {
+                selectorBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    dropdown.classList.toggle('active');
+                    if(dropdown.classList.contains('active')) {
+                        if(typeof gtag === 'function') gtag('event', 'select_node_click', { 'event_category': 'navigation', 'series': 'Baki-Dou (2018)' });
+                    }
+                });
+            }
+            document.addEventListener('click', () => dropdown?.classList.remove('active'));
+            dropdown?.addEventListener('click', (e) => e.stopPropagation());
+
+            // Search Logic
+            const search = document.getElementById('node-search');
+            if(search) {
+                search.addEventListener('input', (e) => {
+                    const query = e.target.value.toLowerCase();
+                    const seriesSection = document.getElementById('series-section');
+                    
+                    if(query.length > 0) {
+                        seriesSection.style.display = 'none';
+                    } else {
+                        seriesSection.style.display = 'block';
+                    }
+
+                    document.querySelectorAll('.node-item').forEach(item => {
+                        const text = item.innerText.toLowerCase();
+                        item.style.display = text.includes(query) ? 'flex' : 'none';
+                    });
+                });
+            }
+
+            // Blade Navigation & Title Orchestration (using animejs-animation skill)
+            const navElements = document.querySelectorAll('.blade-nav-link');
+            const mainTitle = document.querySelector('.hero-banner h1');
+            
+            // Staggered Unfold Animation
+            const tl = anime.timeline({
+                easing: 'easeOutQuart',
+                duration: 1200
+            });
+
+            tl.add({
+                targets: '.blade-nav-link',
+                opacity: [0, 1],
+                translateX: [20, 0],
+                rotateY: [90, 0],
+                delay: anime.stagger(150, {start: 500}),
+                begin: (anim) => {
+                    document.querySelector('nav').style.opacity = '1';
+                }
+            }).add({
+                targets: mainTitle,
+                opacity: [0, 1],
+                scale: [0.95, 1],
+                rotateX: [20, 0],
+                duration: 2000,
+                easing: 'spring(1, 80, 10, 0)'
+            }, '-=1000');
+
+            // Hover interactions for Blade Links
+            navElements.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    anime({
+                        targets: link.querySelector('span'),
+                        skewX: [-15, 0],
+                        duration: 400,
+                        easing: 'easeOutElastic(1, .6)'
+                    });
+                    
+                    if(!link.classList.contains('active')) {
+                        anime({
+                            targets: link,
+                            letterSpacing: ['0.4em', '0.6em'],
+                            duration: 600
+                        });
+                    }
+                });
+
+                link.addEventListener('mouseleave', () => {
+                    if(!link.classList.contains('active')) {
+                        anime({
+                            targets: link,
+                            letterSpacing: ['0.6em', '0.4em'],
+                            duration: 600
+                        });
+                    }
+                });
+            });
+        });
+        
+        function toggleArchiveSort(method) {
+            const grid = document.querySelector('.archive-grid');
+            const items = Array.from(grid.children);
+            if(method === 'LATEST') {
+                items.sort((a, b) => b.dataset.num - a.dataset.num);
+            } else {
+                items.sort((a, b) => a.dataset.num - b.dataset.num);
+            }
+            grid.innerHTML = '';
+            items.forEach(i => grid.appendChild(i));
+        }
+
+        function showAllChapters() {
+            document.querySelectorAll('.chapter-hidden').forEach(c => c.classList.remove('hidden', 'chapter-hidden'));
+            document.getElementById('show-more-btn').style.display = 'none';
+            if(typeof gtag === 'function') gtag('event', 'show_more_chapters', { 'event_category': 'interaction', 'series': 'Baki-Dou (2018)' });
+        }
+    </script>
+</head>
+<body class="antialiased">
+    
+    <nav class="fixed top-0 w-full z-[100] px-6 py-4 flex justify-between items-center bg-black border-b-2 border-white/10">
+        <a href="index.html" class="text-2xl bangers uppercase tracking-tighter text-[var(--primary)]">Universe Controller</a>
+        
+        <div class="flex items-center gap-6">
+            <div class="hidden lg:flex gap-6 items-center">
+                <a href="index.html" class="blade-nav-link  "><span>Grappler Baki</span></a><a href="baki.html" class="blade-nav-link  "><span>Baki</span></a><a href="son-of-ogre.html" class="blade-nav-link  "><span>Baki - Son Of Ogre</span></a><a href="baki-dou-2018.html" class="blade-nav-link active "><span>Baki-Dou (2018)</span></a><a href="golden-kamui.html" class="blade-nav-link  "><span>Golden Kamui</span></a>
+            </div>
+            
+            <div class="relative">
+                <button id="global-selector-btn" class="global-selector-btn">
+                    <span class="text-[10px] font-black uppercase tracking-[0.2em]">Select Node</span>
+                    <div class="w-3 h-3 bg-[var(--primary)] rounded-full animate-pulse"></div>
+                </button>
+                
+                <div id="dropdown-menu" class="dropdown-menu">
+                    <div class="dropdown-header">
+                        <div class="search-container">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="square" stroke-linejoin="bevel"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <input type="text" id="node-search" placeholder="Search Baki-Dou (2018) Chapters...">
+                        </div>
+                    </div>
+                    
+                    <div id="series-section">
+                        <div class="node-section-title">Switch Portals</div>
+                        <div class="series-grid">
+                            <a href="index.html" class="series-link ">Grappler Baki</a>
+<a href="baki.html" class="series-link ">Baki</a>
+<a href="son-of-ogre.html" class="series-link ">Baki - Son Of Ogre</a>
+<a href="baki-dou-2018.html" class="series-link active">Baki-Dou (2018)</a>
+<a href="golden-kamui.html" class="series-link ">Golden Kamui</a>
+
+                        </div>
+                    </div>
+
+                    <div class="node-section-title">Chapter Nodes</div>
+                    <div id="nodes-container" class="node-list">
+                        <a href="manga/baki-dou-2018/chapter-159/index.html" class="node-item"><span class="node-name">Chapter 159</span><span class="node-id">CH 159</span></a><a href="manga/baki-dou-2018/chapter-158/index.html" class="node-item"><span class="node-name">Chapter 158</span><span class="node-id">CH 158</span></a><a href="manga/baki-dou-2018/chapter-156/index.html" class="node-item"><span class="node-name">Chapter 156</span><span class="node-id">CH 156</span></a><a href="manga/baki-dou-2018/chapter-151-the-hunter-at-the-heart-of-tokyo/index.html" class="node-item"><span class="node-name">Chapter 151 The Hunter At The Heart Of Tokyo</span><span class="node-id">CH 151</span></a><a href="manga/baki-dou-2018/chapter-150/index.html" class="node-item"><span class="node-name">Chapter 150</span><span class="node-id">CH 150</span></a><a href="manga/baki-dou-2018/chapter-149/index.html" class="node-item"><span class="node-name">Chapter 149</span><span class="node-id">CH 149</span></a><a href="manga/baki-dou-2018/chapter-148-the-end-of-the-fight-with-sumo/index.html" class="node-item"><span class="node-name">Chapter 148 The End Of The Fight With Sumo</span><span class="node-id">CH 148</span></a><a href="manga/baki-dou-2018/chapter-147/index.html" class="node-item"><span class="node-name">Chapter 147</span><span class="node-id">CH 147</span></a><a href="manga/baki-dou-2018/chapter-146/index.html" class="node-item"><span class="node-name">Chapter 146</span><span class="node-id">CH 146</span></a><a href="manga/baki-dou-2018/chapter-145/index.html" class="node-item"><span class="node-name">Chapter 145</span><span class="node-id">CH 145</span></a><a href="manga/baki-dou-2018/chapter-144-the-limit-for-going-all-out/index.html" class="node-item"><span class="node-name">Chapter 144 The Limit For Going All Out</span><span class="node-id">CH 144</span></a><a href="manga/baki-dou-2018/chapter-143/index.html" class="node-item"><span class="node-name">Chapter 143</span><span class="node-id">CH 143</span></a><a href="manga/baki-dou-2018/chapter-142-the-giant-and-the-ball/index.html" class="node-item"><span class="node-name">Chapter 142 The Giant And The Ball</span><span class="node-id">CH 142</span></a><a href="manga/baki-dou-2018/chapter-141-his-most-muscular-pose/index.html" class="node-item"><span class="node-name">Chapter 141 His Most Muscular Pose</span><span class="node-id">CH 141</span></a><a href="manga/baki-dou-2018/chapter-140/index.html" class="node-item"><span class="node-name">Chapter 140</span><span class="node-id">CH 140</span></a><a href="manga/baki-dou-2018/chapter-139-the-pair/index.html" class="node-item"><span class="node-name">Chapter 139 The Pair</span><span class="node-id">CH 139</span></a><a href="manga/baki-dou-2018/chapter-138-nasty-night/index.html" class="node-item"><span class="node-name">Chapter 138 Nasty Night</span><span class="node-id">CH 138</span></a><a href="manga/baki-dou-2018/chapter-137/index.html" class="node-item"><span class="node-name">Chapter 137</span><span class="node-id">CH 137</span></a><a href="manga/baki-dou-2018/chapter-136/index.html" class="node-item"><span class="node-name">Chapter 136</span><span class="node-id">CH 136</span></a><a href="manga/baki-dou-2018/chapter-135/index.html" class="node-item"><span class="node-name">Chapter 135</span><span class="node-id">CH 135</span></a><a href="manga/baki-dou-2018/chapter-134/index.html" class="node-item"><span class="node-name">Chapter 134</span><span class="node-id">CH 134</span></a><a href="manga/baki-dou-2018/chapter-133/index.html" class="node-item"><span class="node-name">Chapter 133</span><span class="node-id">CH 133</span></a><a href="manga/baki-dou-2018/chapter-132/index.html" class="node-item"><span class="node-name">Chapter 132</span><span class="node-id">CH 132</span></a><a href="manga/baki-dou-2018/chapter-131/index.html" class="node-item"><span class="node-name">Chapter 131</span><span class="node-id">CH 131</span></a><a href="manga/baki-dou-2018/chapter-130/index.html" class="node-item"><span class="node-name">Chapter 130</span><span class="node-id">CH 130</span></a><a href="manga/baki-dou-2018/chapter-129/index.html" class="node-item"><span class="node-name">Chapter 129</span><span class="node-id">CH 129</span></a><a href="manga/baki-dou-2018/chapter-128-tactical-retreat/index.html" class="node-item"><span class="node-name">Chapter 128 Tactical Retreat</span><span class="node-id">CH 128</span></a><a href="manga/baki-dou-2018/chapter-127-leap/index.html" class="node-item"><span class="node-name">Chapter 127 Leap</span><span class="node-id">CH 127</span></a><a href="manga/baki-dou-2018/chapter-126-let-s-set-foot-upon-one-another/index.html" class="node-item"><span class="node-name">Chapter 126 Let S Set Foot Upon One Another</span><span class="node-id">CH 126</span></a><a href="manga/baki-dou-2018/chapter-125-just-how-fast-are-they/index.html" class="node-item"><span class="node-name">Chapter 125 Just How Fast Are They</span><span class="node-id">CH 125</span></a><a href="manga/baki-dou-2018/chapter-124/index.html" class="node-item"><span class="node-name">Chapter 124</span><span class="node-id">CH 124</span></a><a href="manga/baki-dou-2018/chapter-123-bad-one/index.html" class="node-item"><span class="node-name">Chapter 123 Bad One</span><span class="node-id">CH 123</span></a><a href="manga/baki-dou-2018/chapter-122/index.html" class="node-item"><span class="node-name">Chapter 122</span><span class="node-id">CH 122</span></a><a href="manga/baki-dou-2018/chapter-121/index.html" class="node-item"><span class="node-name">Chapter 121</span><span class="node-id">CH 121</span></a><a href="manga/baki-dou-2018/chapter-120-the-height-of-his-head/index.html" class="node-item"><span class="node-name">Chapter 120 The Height Of His Head</span><span class="node-id">CH 120</span></a><a href="manga/baki-dou-2018/chapter-119-an-obsolete-combat-move/index.html" class="node-item"><span class="node-name">Chapter 119 An Obsolete Combat Move</span><span class="node-id">CH 119</span></a><a href="manga/baki-dou-2018/chapter-118-i-was-ready-for-this/index.html" class="node-item"><span class="node-name">Chapter 118 I Was Ready For This</span><span class="node-id">CH 118</span></a><a href="manga/baki-dou-2018/chapter-117-the-stance-of-a-wild-beast/index.html" class="node-item"><span class="node-name">Chapter 117 The Stance Of A Wild Beast</span><span class="node-id">CH 117</span></a><a href="manga/baki-dou-2018/chapter-116-that-stance/index.html" class="node-item"><span class="node-name">Chapter 116 That Stance</span><span class="node-id">CH 116</span></a><a href="manga/baki-dou-2018/chapter-115-a-confounding-tachiai/index.html" class="node-item"><span class="node-name">Chapter 115 A Confounding Tachiai</span><span class="node-id">CH 115</span></a><a href="manga/baki-dou-2018/chapter-114-technical-arsenal/index.html" class="node-item"><span class="node-name">Chapter 114 Technical Arsenal</span><span class="node-id">CH 114</span></a><a href="manga/baki-dou-2018/chapter-113-accidents/index.html" class="node-item"><span class="node-name">Chapter 113 Accidents</span><span class="node-id">CH 113</span></a><a href="manga/baki-dou-2018/chapter-112-an-audience/index.html" class="node-item"><span class="node-name">Chapter 112 An Audience</span><span class="node-id">CH 112</span></a><a href="manga/baki-dou-2018/chapter-111-negligence/index.html" class="node-item"><span class="node-name">Chapter 111 Negligence</span><span class="node-id">CH 111</span></a><a href="manga/baki-dou-2018/chapter-110/index.html" class="node-item"><span class="node-name">Chapter 110</span><span class="node-id">CH 110</span></a><a href="manga/baki-dou-2018/chapter-109-amateurs/index.html" class="node-item"><span class="node-name">Chapter 109 Amateurs</span><span class="node-id">CH 109</span></a><a href="manga/baki-dou-2018/chapter-108-clumps-of-vital-points/index.html" class="node-item"><span class="node-name">Chapter 108 Clumps Of Vital Points</span><span class="node-id">CH 108</span></a><a href="manga/baki-dou-2018/chapter-107-goudoubaki-x-kengan-omega-special-tribute/index.html" class="node-item"><span class="node-name">Chapter 107 Goudoubaki X Kengan Omega Special Tribute</span><span class="node-id">CH 107</span></a><a href="manga/baki-dou-2018/chapter-106/index.html" class="node-item"><span class="node-name">Chapter 106</span><span class="node-id">CH 106</span></a><a href="manga/baki-dou-2018/chapter-105-speaking-in-metaphors/index.html" class="node-item"><span class="node-name">Chapter 105 Speaking In Metaphors</span><span class="node-id">CH 105</span></a><a href="manga/baki-dou-2018/chapter-104-the-same-things/index.html" class="node-item"><span class="node-name">Chapter 104 The Same Things</span><span class="node-id">CH 104</span></a><a href="manga/baki-dou-2018/chapter-103-compassion/index.html" class="node-item"><span class="node-name">Chapter 103 Compassion</span><span class="node-id">CH 103</span></a><a href="manga/baki-dou-2018/chapter-102/index.html" class="node-item"><span class="node-name">Chapter 102</span><span class="node-id">CH 102</span></a><a href="manga/baki-dou-2018/chapter-101-he-exists-for-combat/index.html" class="node-item"><span class="node-name">Chapter 101 He Exists For Combat</span><span class="node-id">CH 101</span></a><a href="manga/baki-dou-2018/chapter-100-i-am-male-and-all-others-are-not/index.html" class="node-item"><span class="node-name">Chapter 100 I Am Male And All Others Are Not</span><span class="node-id">CH 100</span></a><a href="manga/baki-dou-2018/chapter-99/index.html" class="node-item"><span class="node-name">Chapter 99</span><span class="node-id">CH 99</span></a><a href="manga/baki-dou-2018/chapter-98-the-6-on-6-match-ends/index.html" class="node-item"><span class="node-name">Chapter 98 The 6 On 6 Match Ends</span><span class="node-id">CH 98</span></a><a href="manga/baki-dou-2018/chapter-97-emergency-mawashi/index.html" class="node-item"><span class="node-name">Chapter 97 Emergency Mawashi</span><span class="node-id">CH 97</span></a><a href="manga/baki-dou-2018/chapter-96-payback/index.html" class="node-item"><span class="node-name">Chapter 96 Payback</span><span class="node-id">CH 96</span></a><a href="manga/baki-dou-2018/chapter-95/index.html" class="node-item"><span class="node-name">Chapter 95</span><span class="node-id">CH 95</span></a><a href="manga/baki-dou-2018/chapter-94-just-who-is-he/index.html" class="node-item"><span class="node-name">Chapter 94 Just Who Is He</span><span class="node-id">CH 94</span></a><a href="manga/baki-dou-2018/chapter-93/index.html" class="node-item"><span class="node-name">Chapter 93</span><span class="node-id">CH 93</span></a><a href="manga/baki-dou-2018/chapter-92/index.html" class="node-item"><span class="node-name">Chapter 92</span><span class="node-id">CH 92</span></a><a href="manga/baki-dou-2018/chapter-91/index.html" class="node-item"><span class="node-name">Chapter 91</span><span class="node-id">CH 91</span></a><a href="manga/baki-dou-2018/chapter-90/index.html" class="node-item"><span class="node-name">Chapter 90</span><span class="node-id">CH 90</span></a><a href="manga/baki-dou-2018/chapter-89-expectation/index.html" class="node-item"><span class="node-name">Chapter 89 Expectation</span><span class="node-id">CH 89</span></a><a href="manga/baki-dou-2018/chapter-88-dash/index.html" class="node-item"><span class="node-name">Chapter 88 Dash</span><span class="node-id">CH 88</span></a><a href="manga/baki-dou-2018/chapter-87-back-to-the-start/index.html" class="node-item"><span class="node-name">Chapter 87 Back To The Start</span><span class="node-id">CH 87</span></a><a href="manga/baki-dou-2018/chapter-86-dunno/index.html" class="node-item"><span class="node-name">Chapter 86 Dunno</span><span class="node-id">CH 86</span></a><a href="manga/baki-dou-2018/chapter-85-melted/index.html" class="node-item"><span class="node-name">Chapter 85 Melted</span><span class="node-id">CH 85</span></a><a href="manga/baki-dou-2018/chapter-84-the-tiny-giant/index.html" class="node-item"><span class="node-name">Chapter 84 The Tiny Giant</span><span class="node-id">CH 84</span></a><a href="manga/baki-dou-2018/chapter-83-baki-versus-honoo/index.html" class="node-item"><span class="node-name">Chapter 83 Baki Versus Honoo</span><span class="node-id">CH 83</span></a><a href="manga/baki-dou-2018/chapter-82-soccer-kick/index.html" class="node-item"><span class="node-name">Chapter 82 Soccer Kick</span><span class="node-id">CH 82</span></a><a href="manga/baki-dou-2018/chapter-81-affecting-the-brain/index.html" class="node-item"><span class="node-name">Chapter 81 Affecting The Brain</span><span class="node-id">CH 81</span></a><a href="manga/baki-dou-2018/chapter-80-his-last-all-out-burst/index.html" class="node-item"><span class="node-name">Chapter 80 His Last All Out Burst</span><span class="node-id">CH 80</span></a><a href="manga/baki-dou-2018/chapter-79-japan-x-china/index.html" class="node-item"><span class="node-name">Chapter 79 Japan X China</span><span class="node-id">CH 79</span></a><a href="manga/baki-dou-2018/chapter-78-one-to-wake-him-up/index.html" class="node-item"><span class="node-name">Chapter 78 One To Wake Him Up</span><span class="node-id">CH 78</span></a><a href="manga/baki-dou-2018/chapter-77-the-length-of-ten-seconds/index.html" class="node-item"><span class="node-name">Chapter 77 The Length Of Ten Seconds</span><span class="node-id">CH 77</span></a><a href="manga/baki-dou-2018/chapter-76-orochi-katsumi-reborn/index.html" class="node-item"><span class="node-name">Chapter 76 Orochi Katsumi Reborn</span><span class="node-id">CH 76</span></a><a href="manga/baki-dou-2018/chapter-75-orochi-katsumi-versus-shishimaru/index.html" class="node-item"><span class="node-name">Chapter 75 Orochi Katsumi Versus Shishimaru</span><span class="node-id">CH 75</span></a><a href="manga/baki-dou-2018/chapter-74-drinking-party/index.html" class="node-item"><span class="node-name">Chapter 74 Drinking Party</span><span class="node-id">CH 74</span></a><a href="manga/baki-dou-2018/chapter-73-darkness/index.html" class="node-item"><span class="node-name">Chapter 73 Darkness</span><span class="node-id">CH 73</span></a><a href="manga/baki-dou-2018/chapter-72-man-stance/index.html" class="node-item"><span class="node-name">Chapter 72 Man Stance</span><span class="node-id">CH 72</span></a><a href="manga/baki-dou-2018/chapter-71-completed-product/index.html" class="node-item"><span class="node-name">Chapter 71 Completed Product</span><span class="node-id">CH 71</span></a><a href="manga/baki-dou-2018/chapter-70-he-s-that-kid/index.html" class="node-item"><span class="node-name">Chapter 70 He S That Kid</span><span class="node-id">CH 70</span></a><a href="manga/baki-dou-2018/chapter-69-contest-of-manliness/index.html" class="node-item"><span class="node-name">Chapter 69 Contest Of Manliness</span><span class="node-id">CH 69</span></a><a href="manga/baki-dou-2018/chapter-68-hanayama-kaoru-vs-shachihoko/index.html" class="node-item"><span class="node-name">Chapter 68 Hanayama Kaoru Vs Shachihoko</span><span class="node-id">CH 68</span></a><a href="manga/baki-dou-2018/chapter-67-interfering/index.html" class="node-item"><span class="node-name">Chapter 67 Interfering</span><span class="node-id">CH 67</span></a><a href="manga/baki-dou-2018/chapter-66-the-scent-of-screeching-pain/index.html" class="node-item"><span class="node-name">Chapter 66 The Scent Of Screeching Pain</span><span class="node-id">CH 66</span></a><a href="manga/baki-dou-2018/chapter-65-the-technician-s-toolbox/index.html" class="node-item"><span class="node-name">Chapter 65 The Technician S Toolbox</span><span class="node-id">CH 65</span></a><a href="manga/baki-dou-2018/chapter-64-shikodachi/index.html" class="node-item"><span class="node-name">Chapter 64 Shikodachi</span><span class="node-id">CH 64</span></a><a href="manga/baki-dou-2018/chapter-63-like-a-knife/index.html" class="node-item"><span class="node-name">Chapter 63 Like A Knife</span><span class="node-id">CH 63</span></a><a href="manga/baki-dou-2018/chapter-62-the-ultimate-completed-form/index.html" class="node-item"><span class="node-name">Chapter 62 The Ultimate Completed Form</span><span class="node-id">CH 62</span></a><a href="manga/baki-dou-2018/chapter-61-ecstasy/index.html" class="node-item"><span class="node-name">Chapter 61 Ecstasy</span><span class="node-id">CH 61</span></a><a href="manga/baki-dou-2018/chapter-60-doppo-vs-taketsurugi/index.html" class="node-item"><span class="node-name">Chapter 60 Doppo Vs Taketsurugi</span><span class="node-id">CH 60</span></a><a href="manga/baki-dou-2018/chapter-59-the-conclusion-of-the-first-match/index.html" class="node-item"><span class="node-name">Chapter 59 The Conclusion Of The First Match</span><span class="node-id">CH 59</span></a><a href="manga/baki-dou-2018/chapter-58-where-size-difference-is-blind/index.html" class="node-item"><span class="node-name">Chapter 58 Where Size Difference Is Blind</span><span class="node-id">CH 58</span></a><a href="manga/baki-dou-2018/chapter-57-further/index.html" class="node-item"><span class="node-name">Chapter 57 Further</span><span class="node-id">CH 57</span></a><a href="manga/baki-dou-2018/chapter-56/index.html" class="node-item"><span class="node-name">Chapter 56</span><span class="node-id">CH 56</span></a><a href="manga/baki-dou-2018/chapter-55/index.html" class="node-item"><span class="node-name">Chapter 55</span><span class="node-id">CH 55</span></a><a href="manga/baki-dou-2018/chapter-54/index.html" class="node-item"><span class="node-name">Chapter 54</span><span class="node-id">CH 54</span></a><a href="manga/baki-dou-2018/chapter-53/index.html" class="node-item"><span class="node-name">Chapter 53</span><span class="node-id">CH 53</span></a><a href="manga/baki-dou-2018/chapter-52/index.html" class="node-item"><span class="node-name">Chapter 52</span><span class="node-id">CH 52</span></a><a href="manga/baki-dou-2018/chapter-51/index.html" class="node-item"><span class="node-name">Chapter 51</span><span class="node-id">CH 51</span></a><a href="manga/baki-dou-2018/chapter-50/index.html" class="node-item"><span class="node-name">Chapter 50</span><span class="node-id">CH 50</span></a><a href="manga/baki-dou-2018/chapter-49/index.html" class="node-item"><span class="node-name">Chapter 49</span><span class="node-id">CH 49</span></a><a href="manga/baki-dou-2018/chapter-48/index.html" class="node-item"><span class="node-name">Chapter 48</span><span class="node-id">CH 48</span></a><a href="manga/baki-dou-2018/chapter-47/index.html" class="node-item"><span class="node-name">Chapter 47</span><span class="node-id">CH 47</span></a><a href="manga/baki-dou-2018/chapter-46/index.html" class="node-item"><span class="node-name">Chapter 46</span><span class="node-id">CH 46</span></a><a href="manga/baki-dou-2018/chapter-45/index.html" class="node-item"><span class="node-name">Chapter 45</span><span class="node-id">CH 45</span></a><a href="manga/baki-dou-2018/chapter-44/index.html" class="node-item"><span class="node-name">Chapter 44</span><span class="node-id">CH 44</span></a><a href="manga/baki-dou-2018/chapter-43/index.html" class="node-item"><span class="node-name">Chapter 43</span><span class="node-id">CH 43</span></a><a href="manga/baki-dou-2018/chapter-42/index.html" class="node-item"><span class="node-name">Chapter 42</span><span class="node-id">CH 42</span></a><a href="manga/baki-dou-2018/chapter-41/index.html" class="node-item"><span class="node-name">Chapter 41</span><span class="node-id">CH 41</span></a><a href="manga/baki-dou-2018/chapter-40/index.html" class="node-item"><span class="node-name">Chapter 40</span><span class="node-id">CH 40</span></a><a href="manga/baki-dou-2018/chapter-39/index.html" class="node-item"><span class="node-name">Chapter 39</span><span class="node-id">CH 39</span></a><a href="manga/baki-dou-2018/chapter-38/index.html" class="node-item"><span class="node-name">Chapter 38</span><span class="node-id">CH 38</span></a><a href="manga/baki-dou-2018/chapter-37/index.html" class="node-item"><span class="node-name">Chapter 37</span><span class="node-id">CH 37</span></a><a href="manga/baki-dou-2018/chapter-36/index.html" class="node-item"><span class="node-name">Chapter 36</span><span class="node-id">CH 36</span></a><a href="manga/baki-dou-2018/chapter-35/index.html" class="node-item"><span class="node-name">Chapter 35</span><span class="node-id">CH 35</span></a><a href="manga/baki-dou-2018/chapter-34/index.html" class="node-item"><span class="node-name">Chapter 34</span><span class="node-id">CH 34</span></a><a href="manga/baki-dou-2018/chapter-33/index.html" class="node-item"><span class="node-name">Chapter 33</span><span class="node-id">CH 33</span></a><a href="manga/baki-dou-2018/chapter-32/index.html" class="node-item"><span class="node-name">Chapter 32</span><span class="node-id">CH 32</span></a><a href="manga/baki-dou-2018/chapter-31/index.html" class="node-item"><span class="node-name">Chapter 31</span><span class="node-id">CH 31</span></a><a href="manga/baki-dou-2018/chapter-30/index.html" class="node-item"><span class="node-name">Chapter 30</span><span class="node-id">CH 30</span></a><a href="manga/baki-dou-2018/chapter-29/index.html" class="node-item"><span class="node-name">Chapter 29</span><span class="node-id">CH 29</span></a><a href="manga/baki-dou-2018/chapter-28/index.html" class="node-item"><span class="node-name">Chapter 28</span><span class="node-id">CH 28</span></a><a href="manga/baki-dou-2018/chapter-27/index.html" class="node-item"><span class="node-name">Chapter 27</span><span class="node-id">CH 27</span></a><a href="manga/baki-dou-2018/chapter-26/index.html" class="node-item"><span class="node-name">Chapter 26</span><span class="node-id">CH 26</span></a><a href="manga/baki-dou-2018/chapter-25/index.html" class="node-item"><span class="node-name">Chapter 25</span><span class="node-id">CH 25</span></a><a href="manga/baki-dou-2018/chapter-24/index.html" class="node-item"><span class="node-name">Chapter 24</span><span class="node-id">CH 24</span></a><a href="manga/baki-dou-2018/chapter-23/index.html" class="node-item"><span class="node-name">Chapter 23</span><span class="node-id">CH 23</span></a><a href="manga/baki-dou-2018/chapter-22/index.html" class="node-item"><span class="node-name">Chapter 22</span><span class="node-id">CH 22</span></a><a href="manga/baki-dou-2018/chapter-21/index.html" class="node-item"><span class="node-name">Chapter 21</span><span class="node-id">CH 21</span></a><a href="manga/baki-dou-2018/chapter-20/index.html" class="node-item"><span class="node-name">Chapter 20</span><span class="node-id">CH 20</span></a><a href="manga/baki-dou-2018/chapter-19/index.html" class="node-item"><span class="node-name">Chapter 19</span><span class="node-id">CH 19</span></a><a href="manga/baki-dou-2018/chapter-18/index.html" class="node-item"><span class="node-name">Chapter 18</span><span class="node-id">CH 18</span></a><a href="manga/baki-dou-2018/chapter-17/index.html" class="node-item"><span class="node-name">Chapter 17</span><span class="node-id">CH 17</span></a><a href="manga/baki-dou-2018/chapter-16/index.html" class="node-item"><span class="node-name">Chapter 16</span><span class="node-id">CH 16</span></a><a href="manga/baki-dou-2018/chapter-15/index.html" class="node-item"><span class="node-name">Chapter 15</span><span class="node-id">CH 15</span></a><a href="manga/baki-dou-2018/chapter-14/index.html" class="node-item"><span class="node-name">Chapter 14</span><span class="node-id">CH 14</span></a><a href="manga/baki-dou-2018/chapter-12/index.html" class="node-item"><span class="node-name">Chapter 12</span><span class="node-id">CH 12</span></a><a href="manga/baki-dou-2018/chapter-11/index.html" class="node-item"><span class="node-name">Chapter 11</span><span class="node-id">CH 11</span></a><a href="manga/baki-dou-2018/chapter-10/index.html" class="node-item"><span class="node-name">Chapter 10</span><span class="node-id">CH 10</span></a><a href="manga/baki-dou-2018/chapter-9/index.html" class="node-item"><span class="node-name">Chapter 9</span><span class="node-id">CH 9</span></a><a href="manga/baki-dou-2018/chapter-8/index.html" class="node-item"><span class="node-name">Chapter 8</span><span class="node-id">CH 8</span></a><a href="manga/baki-dou-2018/chapter-7/index.html" class="node-item"><span class="node-name">Chapter 7</span><span class="node-id">CH 7</span></a><a href="manga/baki-dou-2018/chapter-6/index.html" class="node-item"><span class="node-name">Chapter 6</span><span class="node-id">CH 6</span></a><a href="manga/baki-dou-2018/chapter-4/index.html" class="node-item"><span class="node-name">Chapter 4</span><span class="node-id">CH 4</span></a><a href="manga/baki-dou-2018/chapter-3/index.html" class="node-item"><span class="node-name">Chapter 3</span><span class="node-id">CH 3</span></a><a href="manga/baki-dou-2018/chapter-2/index.html" class="node-item"><span class="node-name">Chapter 2</span><span class="node-id">CH 2</span></a><a href="manga/baki-dou-2018/chapter-1/index.html" class="node-item"><span class="node-name">Chapter 1</span><span class="node-id">CH 1</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <header class="relative hero-banner min-h-[95vh] flex flex-col justify-end pb-24 px-6 md:px-20 overflow-hidden">
+        
+<div id="kinetic-blade-container" style="position: absolute; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none; opacity:0.6;"></div>
+<script>
+(function() {{
+    const container = document.getElementById('kinetic-blade-container');
+    if(!container) return;
+    
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({{ alpha: true, antialias: true }});
+    renderer.setSize(container.offsetWidth, container.offsetHeight);
+    container.appendChild(renderer.domElement);
+
+    const geometry = new THREE.PlaneGeometry(20, 10, 120, 120);
+    const material = new THREE.ShaderMaterial({{
+        transparent: true,
+        uniforms: {{
+            uTime: {{ value: 0 }},
+            uColor: {{ value: new THREE.Color(getComputedStyle(document.documentElement).getPropertyValue('--primary').trim()) }}
+        }},
+        vertexShader: `
+            varying vec2 vUv;
+            uniform float uTime;
+            void main() {{
+                vUv = uv;
+                vec3 pos = position;
+                
+                // Physical "Folded" Blade Effect
+                float fold = abs(fract(pos.x * 0.5 + uTime * 0.1) - 0.5) * 2.0;
+                float pleats = sin(pos.x * 10.0 + uTime * 2.0) * 0.05;
+                
+                pos.z += fold * 0.5;
+                pos.z += pleats;
+                pos.y += sin(pos.x * 0.5 + uTime) * 0.2;
+                
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+            }}
+        `,
+        fragmentShader: `
+            varying vec2 vUv;
+            uniform vec3 uColor;
+            uniform float uTime;
+            void main() {{
+                float scanline = sin(vUv.y * 200.0 - uTime * 20.0) * 0.15;
+                float edge = step(0.1, abs(sin(vUv.x * 2.0 + uTime))); // Hard edges like a blade
+                float alpha = (1.0 - smoothstep(0.48, 0.52, abs(vUv.y - 0.5))) * 0.4;
+                vec3 color = uColor + scanline;
+                gl_FragColor = vec4(color, alpha * edge);
+            }}
+        `,
+        side: THREE.DoubleSide
+    }});
+
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.rotation.x = -Math.PI / 4;
+    mesh.position.y = 2;
+    scene.add(mesh);
+
+    camera.position.z = 5;
+
+    function animate(t) {{
+        requestAnimationFrame(animate);
+        material.uniforms.uTime.value = t * 0.001;
+        renderer.render(scene, camera);
+    }}
+    
+    window.addEventListener('resize', () => {{
+        camera.aspect = container.offsetWidth / container.offsetHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.offsetWidth, container.offsetHeight);
+    }});
+    
+    animate(0);
+}}();
+</script>
+
+        <!-- Overlay gradient to ensure text readability at the bottom -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 z-2"></div>
+        
+        <!-- Foreground content -->
+        <div class="relative z-10 max-w-5xl glass-overlay">
+            <h1 class="text-8xl md:text-[8rem] bangers leading-none tracking-tighter uppercase mb-6 title-sharp transition-all duration-500">
+                Baki-Dou (2018)
+            </h1>
+            <p class="text-xl md:text-2xl text-white/80 max-w-2xl font-bold uppercase tracking-widest mb-12 drop-shadow-[0_2px_4px_rgba(0,0,0,1)]">
+                Part of the Universe. The sword-saint Musashi Miyamoto enters the modern era.
+            </p>
+            <div class="flex gap-6">
+                <a href="#archive" class="px-12 py-5 bg-[var(--primary)] text-black bangers text-2xl uppercase tracking-widest hover:scale-105 transition" style="box-shadow: 0 0 20px var(--hover-ignite);">Enter Archive</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="archive" class="relative z-20 py-20 px-6 md:px-20 max-w-[1400px] mx-auto min-h-screen">
+        <div class="flex justify-between items-center mb-12">
+            <h2 class="text-6xl bangers tracking-tighter uppercase">Archive / Records</h2>
+            <div class="flex gap-4">
+                <button onclick="toggleArchiveSort('LATEST')" class="px-6 py-2 bg-white/5 border border-white/10 hover:border-[var(--primary)] text-[10px] font-bold uppercase tracking-widest transition">Latest</button>
+                <button onclick="toggleArchiveSort('OLDEST')" class="px-6 py-2 bg-white/5 border border-white/10 hover:border-[var(--primary)] text-[10px] font-bold uppercase tracking-widest transition">Oldest</button>
+            </div>
+        </div>
+        
+        <div class="archive-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+        <a href="manga/baki-dou-2018/chapter-159/index.html" data-num="159.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-159/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 159</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-158/index.html" data-num="158.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-158/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 158</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-156/index.html" data-num="156.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-156/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 156</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-151-the-hunter-at-the-heart-of-tokyo/index.html" data-num="151.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-151-the-hunter-at-the-heart-of-tokyo/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 151 The Hunter At The Heart Of Tokyo</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-150/index.html" data-num="150.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-150/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 150</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-149/index.html" data-num="149.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-149/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 149</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-148-the-end-of-the-fight-with-sumo/index.html" data-num="148.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-148-the-end-of-the-fight-with-sumo/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 148 The End Of The Fight With Sumo</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-147/index.html" data-num="147.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-147/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 147</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-146/index.html" data-num="146.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-146/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 146</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-145/index.html" data-num="145.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-145/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 145</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-144-the-limit-for-going-all-out/index.html" data-num="144.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-144-the-limit-for-going-all-out/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 144 The Limit For Going All Out</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-143/index.html" data-num="143.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-143/1.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 143</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-142-the-giant-and-the-ball/index.html" data-num="142.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-142-the-giant-and-the-ball/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 142 The Giant And The Ball</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-141-his-most-muscular-pose/index.html" data-num="141.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-141-his-most-muscular-pose/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 141 His Most Muscular Pose</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-140/index.html" data-num="140.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-140/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 140</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-139-the-pair/index.html" data-num="139.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-139-the-pair/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 139 The Pair</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-138-nasty-night/index.html" data-num="138.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-138-nasty-night/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 138 Nasty Night</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-137/index.html" data-num="137.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-137/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 137</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-136/index.html" data-num="136.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-136/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 136</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-135/index.html" data-num="135.0" class=" glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-135/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 135</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-134/index.html" data-num="134.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-134/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 134</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-133/index.html" data-num="133.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-133/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 133</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-132/index.html" data-num="132.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-132/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 132</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-131/index.html" data-num="131.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-131/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 131</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-130/index.html" data-num="130.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-130/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 130</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-129/index.html" data-num="129.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-129/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 129</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-128-tactical-retreat/index.html" data-num="128.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-128-tactical-retreat/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 128 Tactical Retreat</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-127-leap/index.html" data-num="127.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-127-leap/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 127 Leap</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-126-let-s-set-foot-upon-one-another/index.html" data-num="126.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-126-let-s-set-foot-upon-one-another/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 126 Let S Set Foot Upon One Another</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-125-just-how-fast-are-they/index.html" data-num="125.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-125-just-how-fast-are-they/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 125 Just How Fast Are They</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-124/index.html" data-num="124.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-124/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 124</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-123-bad-one/index.html" data-num="123.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-123-bad-one/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 123 Bad One</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-122/index.html" data-num="122.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-122/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 122</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-121/index.html" data-num="121.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-121/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 121</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-120-the-height-of-his-head/index.html" data-num="120.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-120-the-height-of-his-head/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 120 The Height Of His Head</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-119-an-obsolete-combat-move/index.html" data-num="119.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-119-an-obsolete-combat-move/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 119 An Obsolete Combat Move</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-118-i-was-ready-for-this/index.html" data-num="118.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-118-i-was-ready-for-this/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 118 I Was Ready For This</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-117-the-stance-of-a-wild-beast/index.html" data-num="117.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-117-the-stance-of-a-wild-beast/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 117 The Stance Of A Wild Beast</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-116-that-stance/index.html" data-num="116.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-116-that-stance/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 116 That Stance</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-115-a-confounding-tachiai/index.html" data-num="115.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-115-a-confounding-tachiai/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 115 A Confounding Tachiai</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-114-technical-arsenal/index.html" data-num="114.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-114-technical-arsenal/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 114 Technical Arsenal</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-113-accidents/index.html" data-num="113.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-113-accidents/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 113 Accidents</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-112-an-audience/index.html" data-num="112.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-112-an-audience/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 112 An Audience</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-111-negligence/index.html" data-num="111.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-111-negligence/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 111 Negligence</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-110/index.html" data-num="110.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-110/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 110</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-109-amateurs/index.html" data-num="109.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-109-amateurs/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 109 Amateurs</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-108-clumps-of-vital-points/index.html" data-num="108.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-108-clumps-of-vital-points/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 108 Clumps Of Vital Points</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-107-goudoubaki-x-kengan-omega-special-tribute/index.html" data-num="107.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-107-goudoubaki-x-kengan-omega-special-tribute/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 107 Goudoubaki X Kengan Omega Special Tribute</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-106/index.html" data-num="106.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-106/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 106</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-105-speaking-in-metaphors/index.html" data-num="105.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-105-speaking-in-metaphors/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 105 Speaking In Metaphors</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-104-the-same-things/index.html" data-num="104.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-104-the-same-things/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 104 The Same Things</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-103-compassion/index.html" data-num="103.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-103-compassion/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 103 Compassion</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-102/index.html" data-num="102.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-102/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 102</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-101-he-exists-for-combat/index.html" data-num="101.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-101-he-exists-for-combat/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 101 He Exists For Combat</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-100-i-am-male-and-all-others-are-not/index.html" data-num="100.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-100-i-am-male-and-all-others-are-not/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 100 I Am Male And All Others Are Not</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-99/index.html" data-num="99.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-99/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 99</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-98-the-6-on-6-match-ends/index.html" data-num="98.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-98-the-6-on-6-match-ends/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 98 The 6 On 6 Match Ends</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-97-emergency-mawashi/index.html" data-num="97.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-97-emergency-mawashi/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 97 Emergency Mawashi</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-96-payback/index.html" data-num="96.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-96-payback/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 96 Payback</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-95/index.html" data-num="95.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-95/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 95</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-94-just-who-is-he/index.html" data-num="94.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-94-just-who-is-he/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 94 Just Who Is He</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-93/index.html" data-num="93.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-93/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 93</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-92/index.html" data-num="92.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-92/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 92</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-91/index.html" data-num="91.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-91/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 91</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-90/index.html" data-num="90.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-90/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 90</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-89-expectation/index.html" data-num="89.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-89-expectation/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 89 Expectation</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-88-dash/index.html" data-num="88.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-88-dash/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 88 Dash</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-87-back-to-the-start/index.html" data-num="87.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-87-back-to-the-start/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 87 Back To The Start</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-86-dunno/index.html" data-num="86.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-86-dunno/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 86 Dunno</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-85-melted/index.html" data-num="85.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-85-melted/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 85 Melted</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-84-the-tiny-giant/index.html" data-num="84.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-84-the-tiny-giant/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 84 The Tiny Giant</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-83-baki-versus-honoo/index.html" data-num="83.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-83-baki-versus-honoo/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 83 Baki Versus Honoo</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-82-soccer-kick/index.html" data-num="82.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-82-soccer-kick/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 82 Soccer Kick</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-81-affecting-the-brain/index.html" data-num="81.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-81-affecting-the-brain/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 81 Affecting The Brain</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-80-his-last-all-out-burst/index.html" data-num="80.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-80-his-last-all-out-burst/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 80 His Last All Out Burst</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-79-japan-x-china/index.html" data-num="79.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-79-japan-x-china/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 79 Japan X China</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-78-one-to-wake-him-up/index.html" data-num="78.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-78-one-to-wake-him-up/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 78 One To Wake Him Up</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-77-the-length-of-ten-seconds/index.html" data-num="77.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-77-the-length-of-ten-seconds/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 77 The Length Of Ten Seconds</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-76-orochi-katsumi-reborn/index.html" data-num="76.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-76-orochi-katsumi-reborn/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 76 Orochi Katsumi Reborn</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-75-orochi-katsumi-versus-shishimaru/index.html" data-num="75.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-75-orochi-katsumi-versus-shishimaru/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 75 Orochi Katsumi Versus Shishimaru</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-74-drinking-party/index.html" data-num="74.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-74-drinking-party/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 74 Drinking Party</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-73-darkness/index.html" data-num="73.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-73-darkness/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 73 Darkness</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-72-man-stance/index.html" data-num="72.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-72-man-stance/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 72 Man Stance</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-71-completed-product/index.html" data-num="71.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-71-completed-product/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 71 Completed Product</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-70-he-s-that-kid/index.html" data-num="70.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-70-he-s-that-kid/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 70 He S That Kid</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-69-contest-of-manliness/index.html" data-num="69.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-69-contest-of-manliness/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 69 Contest Of Manliness</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-68-hanayama-kaoru-vs-shachihoko/index.html" data-num="68.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-68-hanayama-kaoru-vs-shachihoko/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 68 Hanayama Kaoru Vs Shachihoko</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-67-interfering/index.html" data-num="67.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-67-interfering/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 67 Interfering</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-66-the-scent-of-screeching-pain/index.html" data-num="66.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-66-the-scent-of-screeching-pain/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 66 The Scent Of Screeching Pain</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-65-the-technician-s-toolbox/index.html" data-num="65.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-65-the-technician-s-toolbox/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 65 The Technician S Toolbox</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-64-shikodachi/index.html" data-num="64.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-64-shikodachi/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 64 Shikodachi</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-63-like-a-knife/index.html" data-num="63.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-63-like-a-knife/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 63 Like A Knife</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-62-the-ultimate-completed-form/index.html" data-num="62.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-62-the-ultimate-completed-form/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 62 The Ultimate Completed Form</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-61-ecstasy/index.html" data-num="61.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-61-ecstasy/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 61 Ecstasy</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-60-doppo-vs-taketsurugi/index.html" data-num="60.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-60-doppo-vs-taketsurugi/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 60 Doppo Vs Taketsurugi</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-59-the-conclusion-of-the-first-match/index.html" data-num="59.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-59-the-conclusion-of-the-first-match/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 59 The Conclusion Of The First Match</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-58-where-size-difference-is-blind/index.html" data-num="58.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-58-where-size-difference-is-blind/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 58 Where Size Difference Is Blind</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-57-further/index.html" data-num="57.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-57-further/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 57 Further</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-56/index.html" data-num="56.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-56/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 56</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-55/index.html" data-num="55.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-55/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 55</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-54/index.html" data-num="54.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-54/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 54</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-53/index.html" data-num="53.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-53/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 53</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-52/index.html" data-num="52.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-52/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 52</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-51/index.html" data-num="51.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-51/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 51</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-50/index.html" data-num="50.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-50/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 50</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-49/index.html" data-num="49.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-49/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 49</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-48/index.html" data-num="48.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-48/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 48</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-47/index.html" data-num="47.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-47/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 47</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-46/index.html" data-num="46.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-46/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 46</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-45/index.html" data-num="45.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-45/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 45</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-44/index.html" data-num="44.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-44/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 44</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-43/index.html" data-num="43.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-43/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 43</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-42/index.html" data-num="42.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-42/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 42</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-41/index.html" data-num="41.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-41/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 41</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-40/index.html" data-num="40.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-40/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 40</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-39/index.html" data-num="39.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-39/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 39</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-38/index.html" data-num="38.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-38/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 38</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-37/index.html" data-num="37.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-37/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 37</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-36/index.html" data-num="36.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-36/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 36</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-35/index.html" data-num="35.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-35/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 35</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-34/index.html" data-num="34.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-34/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 34</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-33/index.html" data-num="33.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-33/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 33</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-32/index.html" data-num="32.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-32/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 32</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-31/index.html" data-num="31.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-31/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 31</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-30/index.html" data-num="30.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-30/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 30</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-29/index.html" data-num="29.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-29/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 29</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-28/index.html" data-num="28.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-28/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 28</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-27/index.html" data-num="27.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-27/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 27</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-26/index.html" data-num="26.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-26/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 26</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-25/index.html" data-num="25.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-25/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 25</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-24/index.html" data-num="24.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-24/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 24</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-23/index.html" data-num="23.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-23/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 23</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-22/index.html" data-num="22.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-22/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 22</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-21/index.html" data-num="21.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-21/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 21</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-20/index.html" data-num="20.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-20/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 20</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-19/index.html" data-num="19.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-19/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 19</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-18/index.html" data-num="18.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-18/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 18</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-17/index.html" data-num="17.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-17/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 17</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-16/index.html" data-num="16.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-16/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 16</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-15/index.html" data-num="15.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-15/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 15</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-14/index.html" data-num="14.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-14/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 14</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-12/index.html" data-num="12.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-12/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 12</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-11/index.html" data-num="11.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-11/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 11</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-10/index.html" data-num="10.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-10/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 10</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-9/index.html" data-num="9.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-9/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 9</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-8/index.html" data-num="8.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-8/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 8</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-7/index.html" data-num="7.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-7/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 7</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-6/index.html" data-num="6.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-6/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 6</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-4/index.html" data-num="4.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-4/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 4</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-3/index.html" data-num="3.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-3/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 3</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-2/index.html" data-num="2.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-2/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 2</h3>
+            </div>
+        </a>
+        
+        <a href="manga/baki-dou-2018/chapter-1/index.html" data-num="1.0" class="hidden chapter-hidden glass-card group block relative overflow-hidden rounded-xl h-72 shadow-2xl">
+            <img src="manga/baki-dou-2018/chapter-1/01.jpg" class="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700" loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+            <div class="absolute bottom-0 p-6 z-10 w-full">
+                <div class="text-[10px] font-black tracking-widest text-[var(--primary)] uppercase mb-1">Baki-Dou (2018)</div>
+                <h3 class="text-3xl bangers uppercase leading-none group-hover:translate-x-2 transition-transform text-white">Chapter 1</h3>
+            </div>
+        </a>
+        
+        </div>
+
+        <div id="show-more-btn" class="mt-12 text-center">
+            <button onclick="showAllChapters()" class="px-20 py-6 bg-white/5 border border-white/10 hover:bg-white hover:text-black transition uppercase bangers text-2xl tracking-[0.2em]">Show More Records</button>
+        </div>
+    </main>
+
+    <!-- SEO_CONTENT_INJECTED -->
+<section class="seo-section">
+  <h2>The Absolute Legend of Baki‑Dou (2018): Why It Redefined the Genre</h2>
+
+  <p>From the very first splash page, the world of <strong>Baki‑Dou (2018)</strong> erupts like a volcanic clash of titans. Muscles ripple, blood spikes, and the very air seems to crack under the weight of primal fury. If you crave a manga that makes your heart pound in sync with each bone‑shattering blow, you have just found the ultimate battlefield.</p>
+
+  <h3>Art of Combat</h3>
+  <p>Keisuke Itagaki’s brush becomes a weapon, rendering each fight with a twisted yet hyper‑realistic precision that no other artist has dared to achieve. The linework is intentionally distorted—fingers elongate to seize the edge of a fist, veins pulse with a glow that borders on the supernatural—yet every strain, every impact feels terrifyingly <strong>Combat Realism</strong>. Itagaki’s panels are not merely drawings; they are kinetic explosions that thrust the reader into the thick of the clash, demanding a second look at every sinew and sweat droplet.</p>
+
+  <h3>The Philosophy of Strength</h3>
+  <p>At its core, <strong>Baki‑Dou (2018)</strong> is a meditation on the relentless pursuit of supremacy. The Hanma legacy looms like a looming mountain—Yujiro, the "Ogre," embodies absolute dominance, while his son <strong>Baki</strong> wrestles with the paradox of reverence and rebellion. Every opponent is a philosophical mirror, forcing Baki—and us—to confront the raw question: *What does it truly mean to be the strongest?* The series transforms each brutal bout into a rite of passage, a test of will that transcends flesh and blood.</p>
+
+  <h3>Immersive Experience</h3>
+  <p>To feel the full weight of Itagaki’s vision, you must engage with the series in <strong>High Definition Manga</strong> on a platform built for connoisseurs. The razor‑sharp linework, the saturated palettes, and the subtle texture of each panel demand the highest visual fidelity. Only then can you hear the crack of Baki’s knuckles and see the micro‑fractures in an opponent’s jaw. This is the only way to <strong>Read Baki‑Dou (2018) Online</strong> and truly experience the raw power that defines a <strong>Manga Masterpiece</strong>.</p>
+
+  <h3>Final Punch</h3>
+  <p>Close your eyes, feel the electric tension of the arena, and then open them to the page where muscle meets myth. The first chapter waits like a gauntlet—ready to test your resolve, ignite your imagination, and leave you breathless. Dive in now, and let the legend of Baki‑Dou (2018) rewrite what you thought possible in manga.</p>
+</section>
+
+    <footer class="relative z-20 py-20 px-6 text-center border-t border-white/5 bg-black">
+        <div class="text-[10px] font-black uppercase tracking-[1em] text-white/20 mb-8 italic">Universe Network Protocol</div>
+        
+<div class="flex flex-wrap justify-center gap-6 mt-12 mb-8">
+    <a href="about.html" class="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-white transition">About Us</a>
+    <a href="contact.html" class="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-white transition">Contact</a>
+    <a href="privacy-policy.html" class="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-white transition">Privacy Policy</a>
+    <a href="dmca.html" class="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-white transition">DMCA</a>
+    <a href="terms-of-service.html" class="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-white transition">Terms of Service</a>
+    <a href="cookies-policy.html" class="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-white transition">Cookies Policy</a>
+    <a href="disclaimer.html" class="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 hover:text-white transition">Disclaimer</a>
+</div>
+<p class="text-[10px] text-white/20 uppercase tracking-[0.1em] font-bold">&copy; 2024 Bakidou.org - All Rights Reserved.</p>
+
+    </footer>
+</body>
+</html>

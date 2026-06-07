@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Bakidou.org</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #dc143c;
+            --accent: #ffd700;
+            --bg: #050505;
+        }
+        body { 
+            background: var(--bg); 
+            color: #fff; 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6;
+            background-image: radial-gradient(circle at 50% 10%, rgba(220, 20, 60, 0.05) 0%, transparent 50%);
+        }
+        .bangers { font-family: 'Bangers', sans-serif; }
+        .glass { 
+            background: rgba(255, 255, 255, 0.02); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(20px); 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .hero-text {
+            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.4) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-border {
+            position: relative;
+            border-radius: 1rem;
+            padding: 1px;
+            background: linear-gradient(to bottom right, rgba(220, 20, 60, 0.2), rgba(255, 255, 255, 0.05));
+        }
+        .content-area p { margin-bottom: 1.5rem; color: rgba(255,255,255,0.8); }
+        .content-area h2 { font-family: 'Bangers', sans-serif; font-size: 2rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #fff; text-transform: uppercase; letter-spacing: 0.1em; }
+        .content-area strong { color: var(--primary); }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="p-6 md:p-12">
+        <a href="index.html" class="group flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.3em] text-white/40 hover:text-white transition">
+            <span class="w-8 h-[1px] bg-white/20 group-hover:w-12 group-hover:bg-[var(--primary)] transition-all"></span>
+            Return to Universe
+        </a>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 pb-24">
+        <header class="mb-16">
+            <div class="text-[var(--primary)] font-black uppercase tracking-[0.5em] text-[10px] mb-4">Internal Protocol // IDENTITY</div>
+            <h1 class="text-6xl md:text-8xl bangers uppercase hero-text leading-none">About</h1>
+        </header>
+
+        <div class="gradient-border">
+            <div class="glass p-8 md:p-12 rounded-2xl content-area">
+                <h2>Our Vision</h2>
+<p>At <strong>bakidou.org</strong> we aspire to be the definitive destination for enthusiasts of the <em>Baki</em> series, delivering an unparalleled reading experience that honors the depth, intensity, and artistry of the manga.</p>
+
+<h2>What Sets Us Apart</h2>
+<p>We combine a meticulously curated library with cutting‑edge technology to provide:</p>
+<ul>
+    <li><strong>High‑resolution, officially licensed scans</strong> that capture every detail of the original artwork.</li>
+    <li><strong>Instant access to the complete catalogue</strong>, from the classic <em>Baki the Grappler</em> to the latest installments.</li>
+    <li><strong>User‑friendly navigation</strong> optimized for desktops, tablets, and smartphones.</li>
+    <li><strong>Exclusive commentary</strong> from manga scholars and veteran fighters, enriching every chapter.</li>
+</ul>
+
+<h2>Our Commitment to Quality</h2>
+<p>We uphold the highest standards of authenticity, accuracy, and presentation. Every title undergoes a rigorous quality‑control process to ensure that fans receive a reading experience that is both faithful to the source and visually stunning.</p>
+
+<h2>Our Team</h2>
+<p>Our passionate team comprises manga curators, veteran translators, and web‑development specialists, all united by a shared love for the world of <em>Baki</em>. Their expertise guarantees that the portal remains fresh, reliable, and continuously evolving.</p>
+
+<h2>Community & Support</h2>
+<p>We believe in fostering a vibrant community where readers can discuss tactics, character arcs, and the philosophy behind martial arts. Our dedicated support team is available around the clock to address any inquiries and ensure a seamless experience.</p>
+
+<h2>Join the Journey</h2>
+<p>Whether you are a longtime fan or discovering the saga for the first time, <strong>bakidou.org</strong> invites you to immerse yourself in the ultimate Baki universe. Explore, engage, and experience the power of the ultimate fighting spirit.</p>
+            </div>
+        </div>
+
+        <footer class="mt-24 text-center">
+            <p class="text-[10px] text-white/20 uppercase tracking-[0.2em] font-bold">&copy; 2024 Bakidou.org - Transcending the Arena.</p>
+        </footer>
+    </main>
+</body>
+</html>

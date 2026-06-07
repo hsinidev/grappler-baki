@@ -1,0 +1,21 @@
+{
+  "name": "Grappler Baki Manga Online",
+  "short_name": "Baki Manga",
+  "description": "Read Grappler Baki Manga Online in HD quality.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c0c0c",
+  "theme_color": "#c53030",
+  "icons": [
+    {
+      "src": "assets/grappler-baki-favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/grappler-baki-favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

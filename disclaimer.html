@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer - Bakidou.org</title>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #dc143c;
+            --accent: #ffd700;
+            --bg: #050505;
+        }
+        body { 
+            background: var(--bg); 
+            color: #fff; 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6;
+            background-image: radial-gradient(circle at 50% 10%, rgba(220, 20, 60, 0.05) 0%, transparent 50%);
+        }
+        .bangers { font-family: 'Bangers', sans-serif; }
+        .glass { 
+            background: rgba(255, 255, 255, 0.02); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(20px); 
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        .hero-text {
+            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.4) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-border {
+            position: relative;
+            border-radius: 1rem;
+            padding: 1px;
+            background: linear-gradient(to bottom right, rgba(220, 20, 60, 0.2), rgba(255, 255, 255, 0.05));
+        }
+        .content-area p { margin-bottom: 1.5rem; color: rgba(255,255,255,0.8); }
+        .content-area h2 { font-family: 'Bangers', sans-serif; font-size: 2rem; margin-top: 2.5rem; margin-bottom: 1rem; color: #fff; text-transform: uppercase; letter-spacing: 0.1em; }
+        .content-area strong { color: var(--primary); }
+    </style>
+</head>
+<body class="min-h-screen">
+    <nav class="p-6 md:p-12">
+        <a href="index.html" class="group flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.3em] text-white/40 hover:text-white transition">
+            <span class="w-8 h-[1px] bg-white/20 group-hover:w-12 group-hover:bg-[var(--primary)] transition-all"></span>
+            Return to Universe
+        </a>
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-6 pb-24">
+        <header class="mb-16">
+            <div class="text-[var(--primary)] font-black uppercase tracking-[0.5em] text-[10px] mb-4">Internal Protocol // ADVISORY</div>
+            <h1 class="text-6xl md:text-8xl bangers uppercase hero-text leading-none">Disclaimer</h1>
+        </header>
+
+        <div class="gradient-border">
+            <div class="glass p-8 md:p-12 rounded-2xl content-area">
+                <h2>Disclaimer</h2>
+<p><strong>Bakidou.org</strong> serves solely as a portal that connects fan‑translation enthusiasts with publicly available resources. We do not host, store, or distribute any copyrighted files, translations, or related content on our servers.</p>
+
+<h2>Hosting Policy</h2>
+<p>All files linked through our platform are hosted on third‑party sites that are independently operated. <strong>Bakidou.org</strong> provides only the means to locate and access these resources; we have no control over the availability, legality, or content of external sites.</p>
+
+<h2>User Responsibility</h2>
+<p>Visitors are responsible for ensuring that any material they download or view complies with applicable laws and the terms of service of the hosting site. By using <strong>Bakidou.org</strong>, you acknowledge that you will verify the legitimacy of the content you access.</p>
+
+<h2>Liability</h2>
+<p><strong>Bakidou.org</strong> disclaims any liability for actions taken by users or third‑party hosts. We are not liable for any infringement, loss, or damage resulting from the use of links provided on our site.</p>
+
+<h2>Contact</h2>
+<p>If you have concerns regarding specific content or wish to request the removal of a link, please contact us at <strong>admin@bakidou.org</strong>. We will promptly review and address any legitimate requests.</p>
+            </div>
+        </div>
+
+        <footer class="mt-24 text-center">
+            <p class="text-[10px] text-white/20 uppercase tracking-[0.2em] font-bold">&copy; 2024 Bakidou.org - Transcending the Arena.</p>
+        </footer>
+    </main>
+</body>
+</html>
